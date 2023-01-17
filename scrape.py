@@ -1,16 +1,14 @@
 from bs4 import BeautifulSoup
 import requests 
-import pandas as pd 
-
-
+import pandas as pd  
 company = []
-for i in range(1,100):
+for i in range(1,10):
     url = f"http://www.bgapmea.org/index.php/member/member_details/{i}"
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
     lists = soup.find_all('div', class_="content_main")
 
-    for list in lists:
+    for list in lists:  
         body = list.find_all("tr")
         company_name = body[0].find('h2').text
         director_name= body[1].find('h2').text
